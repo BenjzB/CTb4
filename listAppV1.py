@@ -8,6 +8,7 @@ Program Goals:
 
 #create functions that will perform those actions above
 import random
+import turtle
 myList = []
 
 def mainProgram():
@@ -21,7 +22,8 @@ def mainProgram():
 4. Print contents of list
 5. Random Choice
 6. Linear Search
-7. End Program  """)
+7. End Program
+Maybe you can find the Easter Egg. Hint: It literally just said it  """)
             if choice == "1":
                 addToList()
             elif choice == "2":
@@ -34,6 +36,10 @@ def mainProgram():
                 randomSearch()
             elif choice == "6":
                 linearSearch()
+            elif choice == "maybe you can find the easter egg":
+                easterEgg()
+            elif choice == "Maybe you can find the Easter Egg":
+                easterEgg()
             else:
                 print("The program will now end.  ")
                 break
@@ -68,6 +74,31 @@ def linearSearch():
     for x in range(len(myList)):
         if myList[x] == int(searchItem):
             print("Your item is at index {}".format(x))
+    print("Your number appeared [] many times in the list".format(indexCount))
+
+def easterEgg():
+    smiles = turtle.Turtle()    
+    smiles.penup()
+    smiles.goto(-75,150)
+    smiles.pendown()
+    smiles.circle(10)     #eye one
+
+    smiles.penup()
+    smiles.goto(75,150)
+    smiles.pendown()
+    smiles.circle(10)     #eye two
+
+    smiles.penup()
+    smiles.goto(0,0)
+    smiles.pendown()
+    smiles.circle(100,90)   #right smile
+
+    smiles.penup()           
+    smiles.setheading(180) # <-- look West
+    smiles.goto(0,0)
+    smiles.pendown()
+    smiles.circle(-100,90)
+    print("YESSIR, YOU FOUND THE EASTER EGG")
 
 if __name__ == "__main__":
     mainProgram()
