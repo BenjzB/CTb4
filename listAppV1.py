@@ -10,6 +10,7 @@ Program Goals:
 import random
 import turtle
 myList = []
+unique_list = []
 
 def mainProgram():
     while True:
@@ -19,10 +20,11 @@ def mainProgram():
             choice = input("""1. Add to list,
 2. Add a bunch o' numbers
 3. Return the value at an index position
-4. Print contents of list
+4. Sort List
 5. Random Choice
 6. Linear Search
-7. End Program
+7. Print Lists
+8. End Program
 Maybe you can find the Easter Egg. Hint: It literally just said it  """)
             if choice == "1":
                 addToList()
@@ -31,11 +33,13 @@ Maybe you can find the Easter Egg. Hint: It literally just said it  """)
             elif choice == "3":
                 indexValues()
             elif choice == "4":
-                print(myList)
+                sortList(myList)
             elif choice == "5":
                 randomSearch()
             elif choice == "6":
                 linearSearch()
+            elif choice == "7":
+                printLists()
             elif choice == "maybe you can find the easter egg":
                 easterEgg()
             elif choice == "Maybe you can find the Easter Egg":
@@ -59,6 +63,17 @@ def addABunch():
     for x in range(0, int(numToAdd)):
         myList.append(random.randint(0, int(numRange)))
     print("Your list is now complete!")
+
+def sortList(myList):
+    for x in myList:
+        if x not in unique_list:
+            unique_list.append(x)
+    unique_list.sort()
+    showMe = input("Wanna see your new list?   Y/N   ")
+    if showMe.lower() == "y":
+        print(unique_list)
+
+    
     
 def indexValues():
     indexPos = input("At what index position would you like to look?  ")
@@ -75,6 +90,16 @@ def linearSearch():
         if myList[x] == int(searchItem):
             print("Your item is at index {}".format(x))
     print("Your number appeared [] many times in the list".format(indexCount))
+
+def printLists():
+    if len(unique_list) == 0:
+        print(myList)
+    else:
+        whichOne = input("Which list? Sorted or un-sorted?   ")
+        if whichOne.lower() == "sorted":
+            print(unique_list)
+        else:
+            print(myList)
 
 def easterEgg():
     smiles = turtle.Turtle()    
