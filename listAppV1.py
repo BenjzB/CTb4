@@ -23,8 +23,10 @@ def mainProgram():
 4. Sort List
 5. Random Choice
 6. Linear Search
-7. Print Lists
-8. End Program
+7. Recursive Binary Search
+8. Iterative Binary Search
+9. Print Lists
+9. End Program
 Maybe you can find the Easter Egg. Hint: It literally just said it  """)
             if choice == "1":
                 addToList()
@@ -39,6 +41,16 @@ Maybe you can find the Easter Egg. Hint: It literally just said it  """)
             elif choice == "6":
                 linearSearch()
             elif choice == "7":
+                binSearch = input("What number are you looking for?   ")
+                recursiveBinarySearch(unique_list, 0, len(unique_list)-1, int(binSearch))
+            elif choice == "8":
+                binSearch = input("What number are you looking for?   ")
+                result = iterativeBinarySearch(unique_list, int(binSearch))
+                if result != -1:
+                    print("Your number is at index position {}".format(result))
+                else:
+                    print("Your number is not found in that list, bud!")
+            elif choice == "9":
                 printLists()
             elif choice == "maybe you can find the easter egg":
                 easterEgg()
@@ -103,6 +115,23 @@ def recursiveBinarySearch(unique_list, low, high, x):
             return recursiveBinarySearch(unique_list, mid + 1, high, x)
     else:
         print("Your number isn't here!")
+
+def iterativeBinarySearch(unique_list, x):
+    low = 0
+    high = len(unique_list)-1
+    mid = 0
+
+    while low <= high:
+        mid = (high + low) // 2
+
+        if unique_list[mid] < x:
+            low = mid + 1
+
+        elif unique_list[mid] > x:
+            high = mid - 1
+        else:
+            return mid
+    return -1
 
 def printLists():
     if len(unique_list) == 0:
