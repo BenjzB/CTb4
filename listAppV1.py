@@ -118,7 +118,7 @@ def recursiveBinarySearch(unique_list, low, high, x):
 
 def iterativeBinarySearch(unique_list, x):
     low = 0
-    high = len(unique_list)-1
+    high = len(unique_list) - 1
     mid = 0
 
     while low <= high:
@@ -131,7 +131,7 @@ def iterativeBinarySearch(unique_list, x):
             high = mid - 1
         else:
             return mid
-    return -1
+    return - 1
 
 def printLists():
     if len(unique_list) == 0:
